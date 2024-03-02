@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FirstController;
+use App\Http\Controllers\SecondController;
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\Resource2Controller;
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\InovkableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,5 +82,40 @@ Route::get('route13',[
     'uses'=>'App\Http\Controllers\FirstController@index',
     'as'=>"test"
 ]);
+
+Route::get('route14','App\Http\Controllers\SecondController@index');
+Route::get('route15',[SecondController::class,'create']);
+Route::get('route16',[
+    'uses'=>'App\Http\Controllers\SecondController@store',
+    'as'=>"route-16"
+]);
+
+Route::resource('student',ResourceController::class);
+
+
+
+
+Route::resource('except',ResourceController::class)->except(['destroy']);
+Route::resource('only',ResourceController::class)->only(['destroy']);
+Route::apiResource('api',ApiController::class);
+
+Route::resources([
+    'student2'=>ResourceController::class,
+    'student3'=>Resource2Controller::class
+]);
+
+
+Route::apiResources([
+
+]);
+
+
+Route::get('invoke', InovkableController::class);
+
+
+Route::get("param/{id}",[SecondController::class,'update']);
+
+
+
 
 
