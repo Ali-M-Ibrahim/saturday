@@ -7,6 +7,8 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\Resource2Controller;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\InovkableController;
+use App\Http\Controllers\ItemController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -117,5 +119,9 @@ Route::get("param/{id}",[SecondController::class,'update']);
 
 
 
+Route::resource('item',ItemController::class);
+Route::get('item2',[ItemController::class,'create2']);
+Route::get('delete/{id}',[ItemController::class,'delete']);
+Route::put('updateByName/{name}',[ItemController::class,'updateByName']);
 
 
