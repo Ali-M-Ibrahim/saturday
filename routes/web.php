@@ -8,7 +8,7 @@ use App\Http\Controllers\Resource2Controller;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\InovkableController;
 use App\Http\Controllers\ItemController;
-
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,6 +140,9 @@ Route::get('getItemOrById/{id}',[ItemController::class,'getItemOrById']);
 
 Route::get('getFirstOrFailItemByName/{name}',[ItemController::class,'getFirstOrFailItemByName']);
 Route::get('getFirstOrItemByName/{name}',[ItemController::class,'getFirstOrItemByName']);
+
+Route::get('customer',[CustomerController::class,'index']);
+
 
 
 
