@@ -124,4 +124,22 @@ Route::get('item2',[ItemController::class,'create2']);
 Route::get('delete/{id}',[ItemController::class,'delete']);
 Route::put('updateByName/{name}',[ItemController::class,'updateByName']);
 
+Route::get('getItemById/{id}',[ItemController::class,'getItemById']);
+Route::get('getItemByName/{name}',[ItemController::class,'getItemByName']);
+Route::get('getFirstItemByName/{name}',[ItemController::class,'getFirstItemByName']);
+Route::get('getItemByNameAndPrice/{name}/{price}',[ItemController::class,'getItemByNameAndPrice']);
+Route::get('getItemByNameOrPrice/{name}/{price}',[ItemController::class,'getItemByNameOrPrice']);
+Route::get('getItemBySeveralId/{id1}/{id2}/{id3}',[ItemController::class,'getItemBySeveralId']);
+Route::get('getItemInSeveralId/{id1}/{id2}/{id3}',[ItemController::class,'getItemInSeveralId']);
+Route::get('getItemWherePriceBetween/{price1}/{price2}',[ItemController::class,'getItemWherePriceBetween']);
+Route::get('getNameAndPriceByName/{name}',[ItemController::class,'getNameAndPriceByName']);
+Route::get('getItemByNameMax/{name}',[ItemController::class,'getItemByNameMax']);
+
+Route::get('getItemOrFailById/{id}',[ItemController::class,'getItemOrFailById']);
+Route::get('getItemOrById/{id}',[ItemController::class,'getItemOrById']);
+
+Route::get('getFirstOrFailItemByName/{name}',[ItemController::class,'getFirstOrFailItemByName']);
+Route::get('getFirstOrItemByName/{name}',[ItemController::class,'getFirstOrItemByName']);
+
+
 

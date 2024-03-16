@@ -142,5 +142,111 @@ class ItemController extends Controller
     }
 
 
+    public function getItemByName($name){
+        $obj = Item::where('name',$name)->get(); // select * from items where name= $name
+        return $obj;
+    }
+
+    public function getFirstItemByName($name){
+        $obj = Item::where('name',$name)->first(); // select * from items where name= $name limit 1
+        return $obj;
+    }
+
+    public function getItemByNameAndPrice($name,$price){
+        $obj = Item::where('name',$name)
+            ->where('price','>=',$price)
+            ->get(); // select * from items where name= $name and price >= $price
+        return $obj;
+    }
+
+    public function getItemByNameOrPrice($name,$price){
+        $obj = Item::where('name',$name)
+            ->Orwhere('price','>=',$price)
+            ->get(); // select * from items where name= $name or price >= $price
+        return $obj;
+    }
+
+    public function getItemBySeveralId($id1,$id2,$id3){
+        $obj = Item::where('id',$id1)
+            ->Orwhere('id',$id2)
+            ->Orwhere('id',$id3)
+            ->get(); // select * from items where id= $id1 or id = $id2 or id=$id3
+        return $obj;
+    }
+
+
+    public function getItemInSeveralId($id1,$id2,$id3){
+        $obj = Item::whereIn('id',[$id1,$id2,$id3])
+            ->get(); // select * from items where id in ($id1,$id2,$id3)
+        return $obj;
+    }
+
+
+
+    public function getItemWherePriceBetween($price1,$price2){
+        $obj = Item::whereBetween('price',[$price1, $price2])
+            ->get(); // select * from items where price between price1 and price2
+        return $obj;
+    }
+
+
+
+    public function getNameAndPriceByName($name){
+        $obj = Item::where('name',$name)
+            ->select(['id','name','price'])
+            ->orderBy('id','asc')
+            ->take(2)
+            ->get(); // select name,price from items where name= $name
+        return $obj;
+    }
+
+
+
+    public function getItemByNameMax($name){
+        $obj = Item::where('name',$name)
+//            ->max('id')
+//            ->min('id')
+//            ->sum('price')
+//            ->avg('price');
+        ->count();
+        return $obj;
+    }
+
+
+
+
+    public function getItemById($id){
+        $obj = Item::find($id); // select * from items where id=$id
+        return $obj;
+    }
+
+    public function getItemOrFailById($id){
+        $obj = Item::findOrFail($id); // select * from items where id=$id
+        return $obj;
+    }
+
+
+    public function getItemOrById($id){
+        $obj = Item::findOr($id,function(){
+            return "this row does not exist";
+        }); // select * from items where id=$id
+        return $obj;
+    }
+
+    public function getFirstOrFailItemByName($name){
+        $obj = Item::where('name',$name)->firstOrFail(); // select * from items where name= $name limit 1
+        return $obj;
+    }
+
+    public function getFirstOrItemByName($name){
+        $obj = Item::where('name',$name)->firstOr(function(){
+            return "data does not exist";
+        }); // select * from items where name= $name limit 1
+        return $obj;
+    }
+
+
+
 
 }
+
