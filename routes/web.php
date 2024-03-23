@@ -9,6 +9,9 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\InovkableController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -143,6 +146,10 @@ Route::get('getFirstOrItemByName/{name}',[ItemController::class,'getFirstOrItemB
 
 Route::get('customer',[CustomerController::class,'index']);
 
+Route::get('first',[WebsiteController::class,'index']);
+Route::get('template',[WebsiteController::class,'template']);
+Route::get('course',[WebsiteController::class,'course']);
+Route::resource('category',CategoryController::class);
+Route::get('deleteCategory/{id}',[CategoryController::class,'destroy'])->name('delete-category');
 
-
-
+Route::resource('product',ProductController::class);
