@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkSecret');
+
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return "Hello I am index function";
     }
 
     /**
@@ -19,7 +26,7 @@ class ApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Hello I am store function";
     }
 
     /**

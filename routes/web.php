@@ -149,7 +149,20 @@ Route::get('customer',[CustomerController::class,'index']);
 Route::get('first',[WebsiteController::class,'index']);
 Route::get('template',[WebsiteController::class,'template']);
 Route::get('course',[WebsiteController::class,'course']);
-Route::resource('category',CategoryController::class);
 Route::get('deleteCategory/{id}',[CategoryController::class,'destroy'])->name('delete-category');
 
+
+Route::get('API',[ApiController::class,'index'])
+//->middleware('checkSecret')
+;
+
+
+Route::get('APICreate',[ApiController::class,'store']);
+
 Route::resource('product',ProductController::class);
+Route::resource('category',CategoryController::class);
+
+Route::middleware('checkSecret')->group(function () {
+
+
+});
