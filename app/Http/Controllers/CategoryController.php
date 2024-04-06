@@ -29,6 +29,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'category_name'=>'required|min:6|max:10',
+            'category_description'=>'required'
+        ],
+        [
+            'required'=>"this is my custom message"
+        ]);
         $obj = new Category();
         $obj->name= $request->category_name;
         $obj->description= $request->category_description;
