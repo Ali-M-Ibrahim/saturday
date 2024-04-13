@@ -12,7 +12,13 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\DIController;
+
+
 /*
+ *
+ *
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -166,3 +172,11 @@ Route::middleware('checkSecret')->group(function () {
 
 
 });
+
+
+Route::get('getImage',[UploadController::class,'index']);
+Route::post('postImage1',[UploadController::class,'storeImageMethod1'])->name('post-image-1');
+Route::post('postImage2',[UploadController::class,'storeImageMethod2'])->name('post-image-2');
+Route::post('postImage3',[UploadController::class,'storeImageMethod3'])->name('post-image-3');
+
+Route::get('DIExample',[DIController::class,'example3']);
